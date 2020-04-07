@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>按照国家搜索结果</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+	<style type="text/css">
+        .top{
+            /* 设置宽度高度背景颜色 */
+            height: 52px;
+            width:100%;
+            background: url("../static/image/13.jpg");
+			background-repeat:no-repeat;
+			background-size: 100% 100% ;
+            position: fixed; /*固定在顶部*/
+            top: 0;/*离顶部的距离为0*/
+        }
+        .top ul{
+            /* 清除ul标签的默认样式 */
+            width: 40%;
+            list-style-type: none;
+            margin: 0;            
+            padding: 0;
+            overflow: hidden;
+
+        }
+        .top li {    
+            float:left; /* 使li内容横向浮动，即横向排列  */
+            margin-right:15px;  /* 两个li之间的距离*/
+		}
+        .top li a{
+           /* 设置链接内容显示的格式*/
+            display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
+            color:white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none; /* 去除下划线 */
+        }
+        .top li a:hover{
+            /* 鼠标选中时背景变为黑色 */
+            background-color: #111;
+        }
+        .top ul li ul{
+            /* 设置二级菜单 */
+            width: auto;
+            background:rgb(189, 181, 181);
+            position: absolute;
+            display: none; /* 默认隐藏二级菜单的内容 */
+
+        }
+        .top ul li ul li{
+            /* 二级菜单li内容的显示 */
+            margin-right:0;
+            float:none;
+            text-align: center;
+        }
+        .top ul li:hover ul{
+            /* 鼠标选中二级菜单内容时 */
+            display: block;
+        }
+       </style>
+</head>
+<body>
+<div><p>&nbsp;</p></div>
+  <div class="top" style="z-index: 9999;" >
+                   <center> 
+                    <ul style="margin-left:77%">
+                    <li><a href="../templates/index.html">主页</a></li>
+                    <li><a href="../templates/search.html">搜索</a></li>
+                    <li><a href="../templates/world.html">地图索引</a></li>
+                    </ul>
+                    </center>      
+  </div>
+  <div><p><br></p></div>
+
+<input type="hidden" value="2.105.31.14,,,2.106.198.109,,,2.110.12.250,,,2.110.22.117,,,2.110.241.244,,,2.136.120.90,,,2.136.170.55,,,2.136.29.150,,,2.139.168.204,,,2.139.183.22,,,2.15.115.208,,,2.179.254.105,,,2.180.21.212,,,2.184.159.229,,,2.184.52.44,,,2.185.215.134,,,2.186.115.211,,,2.186.117.72,,,2.187.34.48,,,2.195.162.32,,,2.201.107.177,,,2.204.130.43,,,2.224.162.38,,,2.226.152.63,,,2.226.235.226,,,2.228.148.85,,,2.228.148.86,,,2.229.83.25,,,2.233.86.3,,,2.234.123.4,,,2.236.20.159,,,2.237.67.157,,,2.238.34.246,,,2.248.143.96,,,2.38.45.18,,,2.42.16.26,,,2.44.7.85,,,2.7.19.24,,,2.80.151.24,,,2.82.223.18,,," id="ip">
+<input type="hidden" value="Denmark,,,Denmark,,,Denmark,,,Denmark,,,Denmark,,,Spain,,,Spain,,,Spain,,,Spain,,,Spain,,,France,,,Iran,,,Iran,,,Iran,,,Iran,,,Iran,,,Iran,,,Iran,,,Iran,,,Italy,,,Germany,,,Germany,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Italy,,,Sweden,,,Italy,,,Italy,,,Italy,,,France,,,Portugal,,,Portugal,,," id="cu">
+<input type="hidden" value="Watch live surveillance online IP cameras in Stavtrup,,,Watch live surveillance online IP cameras in Ronnede,,,Watch live surveillance online IP cameras in Frederiksberg,,,Watch live surveillance online IP cameras in Copenhagen,,,Watch live surveillance online IP cameras in Tranbjerg,,,Watch live surveillance online IP cameras in Zumaia,,,Испания, Веб камера онлайн побережье в провинции Аликанте | Web Online24,,,Watch live surveillance online IP cameras in Barcelona,,,Watch live surveillance online IP cameras in Almeria,,,Watch live surveillance online IP cameras in Mostoles,,,Watch live surveillance online IP cameras in Perpignan,,,Смотреть онлайн IP камеру в Gorgan,,,Смотреть онлайн IP камеру в Mashhad,,,Watch live surveillance online IP cameras in Shahr-E Kord,,,Watch live surveillance online IP cameras in Yazd,,,Watch live surveillance online IP cameras in Khorramabad,,,Watch live surveillance online IP cameras in Tabriz,,,Watch live surveillance online IP cameras in Tabriz,,,Watch live surveillance online IP cameras in Orumiyeh,,,Watch live surveillance online IP cameras in Milan,,,Watch live surveillance online IP cameras in Dresden,,,Смотреть онлайн IP камеру в Dusseldorf,,,Watch live surveillance online IP cameras in Soliera,,,Watch live surveillance online IP cameras in Leporano,,,欧洲区_第3页_全球眼看世界|全球摄像头在线直播|全球网络在线摄像头,,,Watch live surveillance online IP cameras in Genova,,,Watch live surveillance online IP cameras in Genova,,,Webcam - Piazza del Pantheon - Italy - Rome,,,Watch live surveillance online IP cameras in Genova,,,Pictimo - Watch live webcams in Bologna in Italy,,,Watch live surveillance online IP cameras in Rome,,,Италия, Веб камера онлайн Неаполь улицы старого города | Web Online24,,,Watch live surveillance online IP cameras in Gallarate,,,Швеция, Веб камера онлайн Фунесдален панорама гор | Web Online24,,,Watch live surveillance online IP cameras in Monte San Giusto,,,Pictimo - view live streaming Building webcams around the world,,,Watch live surveillance online IP cameras in Alba,,,Watch live surveillance online IP cameras in Tignes,,,Watch live surveillance online IP cameras in Cantanhede,,,Watch live surveillance online IP cameras in by timezone +00:00,,," id="desc">
+<input type="hidden" value="8.96730041503906,,,11.7592000961304,,,12.357099533081,,,12.461799621582,,,10.3906402587891,,,-3.68513989448547,,,2.16835999488831,,,-3.68513989448547,,,-3.81465005874634,,,-3.65724992752075,,,7.26620006561279,,,55.1747207641602,,,59.6261100769043,,,51.4152793884277,,,54.3705596923828,,,48.3697204589844,,,46.2991714477539,,,46.2991714477539,,,51.4152793884277,,,9.19200038909912,,,8.67350006103516,,,6.44670009613037,,,9.69299983978271,,,16.7411994934082,,,14.2351999282837,,,8.47725009918213,,,8.47725009918213,,,8.90799999237061,,,8.90799999237061,,,11.3427000045776,,,12.306300163269,,,14.2351999282837,,,9.19200038909912,,,15.2134103775024,,,13.6985301971435,,,12.306300163269,,,9.33236980438232,,,6.63299989700317,,,-8.0024995803833,,,-8.60999965667725,,," id="lo">
+<input type="hidden" value="56.138599395752,,,55.2246017456055,,,55.6595993041992,,,55.7946014404297,,,55.396240234375,,,40.4261817932129,,,41.3795890808105,,,40.4261817932129,,,40.4194412231445,,,37.1927909851074,,,43.7034111022949,,,37.2541694641113,,,36.3027801513672,,,35.6872215270996,,,31.9047203063965,,,33.4777793884277,,,38.0747184753418,,,38.0747184753418,,,35.6872215270996,,,45.4720001220703,,,50.0974006652832,,,51.1762008666992,,,45.0530014038086,,,41.1562004089355,,,40.8362007141113,,,44.3110694885254,,,44.3110694885254,,,44.4421005249023,,,44.4421005249023,,,44.5037994384766,,,41.7755012512207,,,40.8362007141113,,,45.4720001220703,,,59.275260925293,,,42.6612701416016,,,41.7755012512207,,,45.5266418457031,,,45.4329986572266,,,40.4324989318848,,,41.1558303833008,,," id="la">
+<input type="hidden" value="1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,3.0,,,1.0,,,1.0,,,2.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,1.0,,,2.0,,,2.0,,,1.0,,,1.0,,,1.0,,," id="co">
+<input type="hidden" value="Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Asia,,,Asia,,,Asia,,,Asia,,,Asia,,,Asia,,,Asia,,,Asia,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,,Europe,,," id="cot">
+<input type="hidden" value="Herning,,,Næstved,,,Albertslund,,,Birkerød,,,Odense,,,Madrid,,,Barcelona,,,Madrid,,,Pozuelo de Alarcón,,,Maracena,,,Nice,,,Gonbad-e Kāvūs,,,Mashhad,,,Tehran,,,Yazd,,,Khorramabad,,,Tabriz,,,Tabriz,,,Tehran,,,Milan,,,Frankfurt am Main,,,Mönchengladbach,,,Piacenza,,,San Paolo,,,Ponticelli,,,Savona,,,Savona,,,Genoa,,,Genoa,,,Bologna,,,Acilia-Castel Fusano-Ostia Antica,,,Ponticelli,,,Milan,,,Örebro,,,Teramo,,,Acilia-Castel Fusano-Ostia Antica,,,Cernusco sul Naviglio,,,Saint-Bon-Tarentaise,,,Carregal Do Sal,,,Porto,,," id="city">
+<input type="hidden" value="Central Jutland,,,Zealand,,,Capital Region,,,Capital Region,,,South Denmark,,,Madrid,,,Catalonia,,,Madrid,,,Madrid,,,Andalusia,,,Provence-Alpes-Côte d&#39;Azur,,,Golestan,,,Razavi Khorasan,,,Tehrān,,,Yazd,,,Lorestān,,,East Azerbaijan,,,East Azerbaijan,,,Tehrān,,,Lombardy,,,Hesse,,,North Rhine-Westphalia,,,Emilia-Romagna,,,Apulia,,,Campania,,,Liguria,,,Liguria,,,Liguria,,,Liguria,,,Emilia-Romagna,,,Latium,,,Campania,,,Lombardy,,,Örebro,,,Abruzzo,,,Latium,,,Lombardy,,,Savoie,,,Viseu,,,Porto,,," id="reg">
+
+<br><br><br><br>
+<div class="bg-warning col-xs-1">
+    <div id="buttons">
+        <br><br>
+        <h1></h1>
+    </div>
+</div>
+<!--<div class="col-xs10 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">-->
+	<div class="col-xl-10 offset-md-4 offset-lg-4 offset-xl-4">
+    <div id="text">
+        <br><br>
+        <br><br>
+    </div>
+</div>
+</body>
+
+<script>
+    const ip = document.getElementById("ip").value.split(",,,");
+    const cu = document.getElementById("cu").value.split(",,,");
+    const desc = document.getElementById("desc").value.split(",,,");
+    const lo = document.getElementById("lo").value.split(",,,");
+    const la = document.getElementById("la").value.split(",,,");
+    const co = document.getElementById("co").value.split(",,,");
+    const cot = document.getElementById("cot").value.split(",,,");
+    const ci = document.getElementById("city").value.split(",,,");
+    const re = document.getElementById("reg").value.split(",,,");
+
+    const count = co.length;
+    const d = document.getElementById("buttons").parentNode;
+    const t = document.getElementById("text").parentNode;
+    d.innerText = "";
+
+    function gen_text(str) {
+        var text = document.createElement('p');
+        text.innerHTML = str;
+        return text;
+    }
+    var baidumap = document.createElement("div");
+    baidumap.setAttribute("id","allmap");
+    baidumap.setAttribute("style"," width: 350px; height: 350px;");
+    for (let i = 0; i < count - 1; i++) {
+        var button = document.createElement("input"); //创建一个input对象（提示框按钮）
+        button.setAttribute("type", "button");
+        button.setAttribute("value", ip[i]);
+        button.style.width = "100px";
+        button.style.align = "center";
+        button.style.marginBottom = "10px";
+        button.style.background = "#000000";
+        button.style.border = "1px solid " + "#000000";//52
+        button.style.color = "white";
+        button.onclick = function () {
+            var childs = t.childNodes;
+            for (let j = childs.length - 1; j !== 1; j--) t.removeChild(childs[j]);
+            t.appendChild(gen_text("ip:" + ip[i] + "<br>"));
+            t.appendChild(gen_text("continent:" + cot[i] + "<br>"));
+            t.appendChild(gen_text("country:" + cu[i] + "<br>"));
+            t.appendChild(gen_text("city:" + ci[i] + "<br>"));
+            t.appendChild(gen_text("region:" + re[i] + "<br>"));
+            t.appendChild(gen_text("longitude:" + lo[i] + " " + "latitude:" + la[i] + "<br>"));
+            t.appendChild(baidumap);
+            t.appendChild(gen_text("desc:" + desc[i] + "<br>"));
+            for (let j = 1; j !== parseInt(co[i]) + 1; j++) {
+                var pic = document.createElement("img");
+                pic.setAttribute("src", '/camimage/' + ip[i] + "/" + j.toString() + ".jpg");
+                pic.setAttribute("height", "200");
+                pic.setAttribute("width", "200");
+                t.appendChild(pic);
+            }
+            document.documentElement.scrollTop = document.body.scrollTop = -200;
+
+            var map = new BMap.Map("allmap");
+            map.centerAndZoom(new BMap.Point(parseFloat(lo[i]),parseFloat(la[i])),19);
+            map.enableScrollWheelZoom(true);
+            var new_point = new BMap.Point(parseFloat(lo[i]),parseFloat(la[i]));
+            var marker = new BMap.Marker(new_point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            map.panTo(new_point);
+        };
+        d.appendChild(button);
+    }
+    var button = document.createElement("input"); //创建一个input对象（提示框按钮）
+    button.setAttribute("type", "button");
+    button.setAttribute("value", "all");
+    button.style.width = "100px";
+    button.style.align = "center";
+    button.style.marginBottom = "10px";
+    button.style.background = "#000000";
+    button.style.border = "1px solid " + "#000000";//52
+    button.style.color = "white";
+    button.onclick = function () {
+        var childs = t.childNodes;
+        for (let j = childs.length - 1; j !== 1; j--) t.removeChild(childs[j]);
+        for (let i = 0; i < count - 1; i++) {
+            t.appendChild(gen_text("ip:" + ip[i] + "<br>"));
+            t.appendChild(gen_text("continent:" + cot[i] + "<br>"));
+            t.appendChild(gen_text("country:" + cu[i] + "<br>"));
+            t.appendChild(gen_text("city:" + ci[i] + "<br>"));
+            t.appendChild(gen_text("region:" + re[i] + "<br>"));
+            t.appendChild(gen_text("desc:" + desc[i] + "<br>"));
+            t.appendChild(gen_text("longitude:" + lo[i] + " " + "latitude:" + la[i] + "<br>"));
+            for (let j = 1; j !== parseInt(co[i]) + 1; j++) {
+                var pic = document.createElement("img");
+                pic.setAttribute("src", '/camimage/' + ip[i] + "/" + j.toString() + ".jpg");
+                pic.setAttribute("height", "200");
+                pic.setAttribute("width", "200");
+                t.appendChild(pic);
+            }
+        }
+        document.documentElement.scrollTop = document.body.scrollTop = -200;
+    };
+    d.appendChild(button);
+</script>
+</html>
